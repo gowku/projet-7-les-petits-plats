@@ -1,0 +1,30 @@
+ul,
+li {
+  list-style: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  width: 1400px;
+}
+
+header {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header p {
+  margin-top: -0.2rem;
+  color: #d04f4f;
+}/*# sourceMappingURL=index.css.map */

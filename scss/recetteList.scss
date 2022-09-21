@@ -1,0 +1,62 @@
+main {
+  margin-top: 3rem;
+  width: 100%;
+}
+.cards-container {
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 425px);
+  row-gap: 2.5rem;
+}
+
+.card {
+  border-radius: 5px;
+  width: 380px;
+  height: 364px;
+  font-family: "Lato";
+  font-size: 18px;
+  line-height: 22px;
+  background-color: #e7e7e7;
+  &-image {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 50%;
+    background-color: #c7bebe;
+  }
+  &-description {
+    &-top {
+      height: 3rem;
+      margin: 0 2%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-time {
+        display: flex;
+        align-items: center;
+        & p {
+          margin-left: 0.3rem;
+        }
+      }
+    }
+    &-bottom {
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 14px;
+      margin: 0 2%;
+      display: flex;
+      &-recette {
+        width: 48%;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 17px;
+      }
+      &-ingredients {
+        width: 48%;
+        & p {
+          margin-top: 0.2rem;
+        }
+      }
+    }
+  }
+}

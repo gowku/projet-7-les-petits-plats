@@ -1,0 +1,26 @@
+.searchbar {
+  width: 90%;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+}
+.searchbar input {
+  width: 96%;
+  height: 3.3rem;
+  border: none;
+  background: #e7e7e7;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.searchbar button {
+  width: 4%;
+  height: 3.3rem;
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.searchbar button svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=searchbar.css.map */

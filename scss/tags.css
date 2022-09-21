@@ -1,0 +1,21 @@
+.tags {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: flex;
+}
+
+.tag {
+  background: #3282f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: white;
+  border-radius: 5px;
+  margin-left: 2rem;
+  width: 7rem;
+  height: 2.5rem;
+}
+.tag:first-child {
+  margin-left: 0;
+}/*# sourceMappingURL=tags.css.map */
