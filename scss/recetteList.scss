@@ -41,10 +41,19 @@ main {
       display: flex;
       &-recette {
         width: 48%;
+        height: 7.5rem;
+        p {
+          -webkit-box-orient: vertical;
+          display: -webkit-box;
+          -webkit-line-clamp: 7;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: normal;
+        }
       }
       &-ingredients {
         width: 48%;
-        & p {
+        & li {
           margin-top: 0.2rem;
         }
       }

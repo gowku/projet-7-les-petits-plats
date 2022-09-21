@@ -43,10 +43,19 @@ main {
 }
 .card-description-bottom-recette {
   width: 48%;
+  height: 7.5rem;
+}
+.card-description-bottom-recette p {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }
 .card-description-bottom-ingredients {
   width: 48%;
 }
-.card-description-bottom-ingredients p {
+.card-description-bottom-ingredients li {
   margin-top: 0.2rem;
 }/*# sourceMappingURL=recetteList.css.map */
