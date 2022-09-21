@@ -5,17 +5,36 @@
   display: flex;
   gap: 1rem;
   &-dropdownmenu {
-    &-1 .color {
-      background: #3282f7;
-      color: #ffffff;
+    &-1 {
+      & .color {
+        background: $tertiary;
+        color: $typoPrimary;
+      }
+      & .dropdown__list-item:hover,
+      .input_selected:hover {
+        background-color: lighten($color: $tertiary, $amount: 10);
+      }
     }
-    &-2 .color {
-      background: #68d9a4;
-      color: #ffffff;
+
+    &-2 {
+      & .color {
+        background: $quartary;
+        color: $typoPrimary;
+      }
+      & .dropdown__list-item:hover,
+      .input_selected:hover {
+        background-color: lighten($color: $quartary, $amount: 10);
+      }
     }
-    &-3 .color {
-      background: #ed6454;
-      color: #ffffff;
+    &-3 {
+      & .color {
+        background: $cinq;
+        color: $typoPrimary;
+      }
+      & .dropdown__list-item:hover,
+      .input_selected:hover {
+        background-color: lighten($color: $cinq, $amount: 10);
+      }
     }
   }
 }
@@ -35,7 +54,7 @@
     right: 0;
     top: 0;
     transition: transform 0.2s linear;
-    fill: white;
+    fill: $arrow;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +84,7 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   &-item {
-    color: #ffffff;
+    color: $typoPrimary;
     padding-left: 1.2rem;
     transition: background-color 0.1s linear, color 0.1s linear;
     list-style-position: inside;
@@ -73,11 +92,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0.25rem 0;
-    &:hover,
-    &:focus {
-      background-color: #00c2ff;
-      color: white;
-    }
   }
 }
 
@@ -102,9 +116,6 @@
   margin: 0.6rem 0;
   padding-left: 0.6rem;
   border: none;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 23px;
   width: 80%;
   &:hover {
     background-color: #00c2ff;

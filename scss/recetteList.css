@@ -15,9 +15,6 @@ main {
   border-radius: 5px;
   width: 380px;
   height: 364px;
-  font-family: "Lato";
-  font-size: 18px;
-  line-height: 22px;
   background-color: #e7e7e7;
 }
 .card-image {
@@ -41,17 +38,11 @@ main {
   margin-left: 0.3rem;
 }
 .card-description-bottom {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
   margin: 0 2%;
   display: flex;
 }
 .card-description-bottom-recette {
   width: 48%;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 17px;
 }
 .card-description-bottom-ingredients {
   width: 48%;

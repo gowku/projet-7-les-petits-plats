@@ -57,4 +57,27 @@ span {
   font-weight: 400;
   font-size: 12px;
   line-height: 100%;
+}
+
+.input_selected {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.card {
+  font-family: "Lato";
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.card-description-bottom {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+}
+.card-description-bottom-recette {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
 }/*# sourceMappingURL=typo.css.map */

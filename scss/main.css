@@ -59,6 +59,29 @@ span {
   line-height: 100%;
 }
 
+.input_selected {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.card {
+  font-family: "Lato";
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.card-description-bottom {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 14px;
+}
+.card-description-bottom-recette {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+}
+
 ul,
 li {
   list-style: none;
@@ -148,15 +171,27 @@ header p {
 }
 .menus-dropdownmenu-1 .color {
   background: #3282f7;
-  color: #ffffff;
+  color: white;
+}
+.menus-dropdownmenu-1 .dropdown__list-item:hover,
+.menus-dropdownmenu-1 .input_selected:hover {
+  background-color: #63a0f9;
 }
 .menus-dropdownmenu-2 .color {
   background: #68d9a4;
-  color: #ffffff;
+  color: white;
+}
+.menus-dropdownmenu-2 .dropdown__list-item:hover,
+.menus-dropdownmenu-2 .input_selected:hover {
+  background-color: #91e3bd;
 }
 .menus-dropdownmenu-3 .color {
   background: #ed6454;
-  color: #ffffff;
+  color: white;
+}
+.menus-dropdownmenu-3 .dropdown__list-item:hover,
+.menus-dropdownmenu-3 .input_selected:hover {
+  background-color: #f28e82;
 }
 
 .dropdown {
@@ -206,7 +241,7 @@ header p {
   border-bottom-right-radius: 5px;
 }
 .dropdown__list-item {
-  color: #ffffff;
+  color: white;
   padding-left: 1.2rem;
   transition: background-color 0.1s linear, color 0.1s linear;
   list-style-position: inside;
@@ -214,10 +249,6 @@ header p {
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0.25rem 0;
-}
-.dropdown__list-item:hover, .dropdown__list-item:focus {
-  background-color: #00c2ff;
-  color: white;
 }
 
 .grille {
@@ -242,9 +273,6 @@ header p {
   margin: 0.6rem 0;
   padding-left: 0.6rem;
   border: none;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 23px;
   width: 80%;
 }
 .input_selected:hover {
@@ -278,9 +306,6 @@ main {
   border-radius: 5px;
   width: 380px;
   height: 364px;
-  font-family: "Lato";
-  font-size: 18px;
-  line-height: 22px;
   background-color: #e7e7e7;
 }
 .card-image {
@@ -304,17 +329,11 @@ main {
   margin-left: 0.3rem;
 }
 .card-description-bottom {
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 14px;
   margin: 0 2%;
   display: flex;
 }
 .card-description-bottom-recette {
   width: 48%;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 17px;
 }
 .card-description-bottom-ingredients {
   width: 48%;
