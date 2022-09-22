@@ -300,6 +300,7 @@ main {
   justify-content: center;
   grid-template-columns: repeat(auto-fill, 425px);
   row-gap: 2.5rem;
+  margin-bottom: 5rem;
 }
 
 .card {
@@ -320,6 +321,9 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.card-description-top-title {
+  width: 70%;
 }
 .card-description-top-time {
   display: flex;
@@ -348,5 +352,6 @@ main {
   width: 48%;
 }
 .card-description-bottom-ingredients li {
+  width: 95%;
   margin-top: 0.2rem;
 }/*# sourceMappingURL=main.css.map */

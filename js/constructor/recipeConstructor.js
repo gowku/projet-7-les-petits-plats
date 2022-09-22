@@ -9,13 +9,13 @@ export class RecipeConstructor {
     this.servings = recipe.servings;
     this.time = recipe.time;
     this.ustensils = recipe.ustensils;
-    this.$ingredientWrapper = document.createElement("ul");
+    // this.$ingredientWrapper = document.createElement("ul");
   }
 
   getRecipe() {
     const $recipeWrapper = document.createElement("div");
     $recipeWrapper.classList.add("card");
-    this.getIngredient();
+    // this.getIngredient();
 
     const recipe = `
     <div class="card-image"></div>
@@ -47,10 +47,12 @@ export class RecipeConstructor {
   }
 
   getIngredient() {
+    const $ingredientWrapper = document.createElement("ul");
+
     for (const ingredient in this.ingredients) {
       //   console.log(ingredient);
       const element = this.ingredients[ingredient];
-      console.log(element);
+      // console.log(element);
       let ingredientLi;
       if (element.unit != undefined) {
         return (ingredientLi = `
@@ -62,7 +64,9 @@ export class RecipeConstructor {
             <span>${element.quantity}</span></li>`);
       }
     }
-    this.$ingredientWrapper.appendChild(ingredientLi);
+    $ingredientWrapper.appendChild(ingredientLi);
+    console.log($ingredientWrapper);
+    return $ingredientWrapper;
     // const $ingredientWrapper = document.querySelector(".ingredientContainer");
     // $ingredientWrapper.classList.add("ingredientContainer");
     // let ingredient;
