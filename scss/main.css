@@ -144,7 +144,18 @@ header p {
   width: 90%;
   margin: 0 auto;
   margin-top: 2rem;
+}
+.tags-container {
   display: flex;
+}
+.tags .ingredient {
+  background: #3282f7;
+}
+.tags .appareil {
+  background: #68d9a4;
+}
+.tags .ustensil {
+  background: #ed6454;
 }
 
 .tag {
@@ -192,6 +203,9 @@ header p {
 .menus-dropdownmenu-3 .dropdown__list-item:hover,
 .menus-dropdownmenu-3 .input_selected:hover {
   background-color: #f28e82;
+}
+.menus-dropdownmenu-3 .dropdown__list-item::first-letter {
+  text-transform: capitalize;
 }
 
 .dropdown {

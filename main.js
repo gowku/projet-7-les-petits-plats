@@ -1,9 +1,19 @@
 import { recipes } from "./js/data/recipes.js";
 import { RecipeConstructor } from "./js/constructor/recipeConstructor2.js";
+import { dropdown } from "./js/dropdown/dropdown.js";
+import { dropdownItemsConstructor } from "./js/constructor/dropdownItems.js";
 
 class App {
   constructor() {
     this.$recipesWrapper = document.querySelector(".cards-container");
+    this.$tagWrapper = document.querySelector(".tags");
+    this.$ingredientWrapper = document.getElementById("ingredient");
+    this.$appareilWrapper = document.getElementById("appareil");
+    this.$ustensilWrapper = document.getElementById("ustensil");
+  }
+
+  sortedRecipeAlp() {
+    return recipes.sort((a, b) => a.name.localeCompare(b.name, "fr", { ignorePunctuation: true }));
   }
 
   printCardDom(recipes) {
@@ -13,47 +23,67 @@ class App {
     });
   }
 
-  sortedRecipeAlp() {
-    return recipes.sort((a, b) => a.name.localeCompare(b.name, "fr", { ignorePunctuation: true }));
+  printMaterial(materials) {
+    const materialsTemplate = new dropdownItemsConstructor(materials);
+    const Templates = materialsTemplate.getAllMaterials();
+
+    this.$ingredientWrapper.appendChild(Templates[0]);
+    this.$appareilWrapper.appendChild(Templates[1]);
+    this.$ustensilWrapper.appendChild(Templates[2]);
+  }
+
+  allIngredients = () => {
+    let ingredients = [];
+    recipes.forEach((recipe) => {
+      recipe.ingredients.forEach((ingredient) => {
+        ingredients.push(ingredient.ingredient);
+      });
+    });
+    let uniqueIngredients = [...new Set(ingredients)];
+    uniqueIngredients.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
+
+    return uniqueIngredients;
+  };
+
+  allAppareil() {
+    let appareils = [];
+    recipes.forEach((recipe) => {
+      appareils.push(recipe.appliance);
+    });
+    let uniqueAppareils = [...new Set(appareils)];
+    uniqueAppareils.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
+
+    return uniqueAppareils;
+  }
+
+  allUstensil() {
+    let ustensils = [];
+    recipes.forEach((recipe) => {
+      recipe.ustensils.forEach((ustensil) => {
+        ustensils.push(ustensil);
+      });
+    });
+    let uniqueUstensil = [...new Set(ustensils)];
+    uniqueUstensil.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
+
+    return uniqueUstensil;
+  }
+
+  allMaterials() {
+    let materials = {};
+    materials.ingredients = this.allIngredients();
+    materials.appareils = this.allAppareil();
+    materials.ustensils = this.allUstensil();
+
+    return materials;
   }
 
   main() {
-    const dropdown = document.querySelectorAll(".dropdown");
-    const list = document.querySelectorAll(".dropdown__list");
-    const listContainer = document.querySelectorAll(".dropdown__list-container");
-    const dropdownArrow = document.querySelectorAll(".dropdown__arrow");
-    const listItems = document.querySelectorAll(".dropdown__list-item");
-    const dropdownSelectedNode = document.querySelectorAll(".dropdown__arrow");
-    const listItemIds = [];
-    // const toRemove = document.querySelector("#dropdown__selected");
-
-    for (let i = 0; i < dropdownSelectedNode.length; i++) {
-      dropdownSelectedNode[i].addEventListener("click", (e) => {
-        list[i].classList.toggle("open");
-        dropdown[i].classList.toggle("radius");
-        dropdown[i].classList.toggle("open_input");
-        dropdownArrow[i].classList.toggle("expanded");
-        listContainer[i].setAttribute("aria-expanded", list[i].classList.contains("open"));
-      });
-    }
-    listItems.forEach((item) => listItemIds.push(item.id));
-
-    listItems.forEach((item) => {
-      item.addEventListener("click", (e) => {
-        dropdown.classList.toggle("radius");
-        // setSelectedListItem(e);
-        closeList();
-      });
-    });
-    function closeList() {
-      list.classList.remove("open");
-      // toRemove.remove();
-      // dropdownSelectedNode.innerHTML = p;
-      dropdownArrow.classList.remove("expanded");
-      listContainer.setAttribute("aria-expanded", false);
-    }
-
     this.printCardDom(this.sortedRecipeAlp());
+
+    this.printMaterial(this.allMaterials());
+
+    dropdown();
   }
 }
 const app = new App();

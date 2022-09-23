@@ -13,7 +13,7 @@ export class RecipeConstructor {
   }
 
   getRecipe() {
-    const recipe = document.createElement("div");
+    const recipe = document.createElement("article");
     recipe.classList.add("card");
     const img = document.createElement("div");
     img.classList.add("card-image");

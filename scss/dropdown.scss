@@ -35,6 +35,9 @@
       .input_selected:hover {
         background-color: lighten($color: $cinq, $amount: 10);
       }
+      & .dropdown__list-item::first-letter {
+        text-transform: capitalize;
+      }
     }
   }
 }
@@ -127,6 +130,7 @@
 
 .open {
   opacity: 1;
+  // display: block;
   &_input {
     width: 36rem;
   }

@@ -2,7 +2,18 @@
   width: 90%;
   margin: 0 auto;
   margin-top: 2rem;
-  display: flex;
+  &-container {
+    display: flex;
+  }
+  & .ingredient {
+    background: $tertiary;
+  }
+  & .appareil {
+    background: $quartary;
+  }
+  & .ustensil {
+    background: $cinq;
+  }
 }
 .tag {
   background: $tertiary;
