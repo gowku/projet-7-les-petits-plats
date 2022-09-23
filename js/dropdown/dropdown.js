@@ -20,21 +20,21 @@ export function dropdown() {
       listContainer[i].setAttribute("aria-expanded", list[i].classList.contains("open"));
     });
   }
+  // console.log(listItems);
+  // listItems.forEach((item) => {
+  //   item.addEventListener("click", (e) => {
+  //     // dropdown.classList.toggle("radius");
+  //     setSelectedListItem(e);
+  //     // closeList();
+  //   });
+  // });
 
-  listItems.forEach((item) => {
-    item.addEventListener("click", (e) => {
-      // dropdown.classList.toggle("radius");
-      setSelectedListItem(e);
-      // closeList();
-    });
-  });
-
-  function setSelectedListItem(e) {
-    // console.log(e.target);
-    const tag = e.target;
-    //   const tagTemplate = new tagConstructor(tag);
-    //   this.$tagWrapper;
-  }
+  // function setSelectedListItem(e) {
+  //   // console.log(e.target);
+  //   const tag = e.target;
+  //   // const tagTemplate = new tagConstructor(tag);
+  //   // this.$tagWrapper;
+  // }
 
   function closeList() {
     list.classList.remove("open");

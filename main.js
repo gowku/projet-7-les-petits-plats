@@ -1,12 +1,12 @@
 import { recipes } from "./js/data/recipes.js";
 import { RecipeConstructor } from "./js/constructor/recipeConstructor2.js";
-import { dropdown } from "./js/dropdown/dropdown.js";
 import { dropdownItemsConstructor } from "./js/constructor/dropdownItems.js";
+import { tagConstructor } from "./js/constructor/tagConstructor.js";
 
 class App {
   constructor() {
     this.$recipesWrapper = document.querySelector(".cards-container");
-    this.$tagWrapper = document.querySelector(".tags");
+    this.$tagWrapper = document.querySelector(".tags-container");
     this.$ingredientWrapper = document.getElementById("ingredient");
     this.$appareilWrapper = document.getElementById("appareil");
     this.$ustensilWrapper = document.getElementById("ustensil");
@@ -78,12 +78,60 @@ class App {
     return materials;
   }
 
+  dropdown() {
+    const dropdown = document.querySelectorAll(".dropdown");
+    const lists = document.querySelectorAll(".dropdown__list");
+    const listContainer = document.querySelectorAll(".dropdown__list-container");
+    const dropdownArrow = document.querySelectorAll(".dropdown__arrow");
+    const listItems = document.querySelectorAll(".dropdown__list-item");
+    const dropdownSelectedNode = document.querySelectorAll(".dropdown__arrow");
+
+    for (let i = 0; i < dropdownSelectedNode.length; i++) {
+      dropdownSelectedNode[i].addEventListener("click", (e) => {
+        lists[i].classList.toggle("open");
+        lists[i].classList.toggle("grille");
+        dropdown[i].classList.toggle("radius");
+        dropdown[i].classList.toggle("open_input");
+        dropdownArrow[i].classList.toggle("expanded");
+        listContainer[i].setAttribute("aria-expanded", lists[i].classList.contains("open"));
+      });
+    }
+
+    function closeList() {
+      const expanded = document.querySelector(".open");
+      // console.log(dropdownArrow);
+      lists.forEach((list) => {
+        list.classList.remove("open");
+        list.classList.remove("grille");
+
+        dropdownArrow.forEach((el) => {
+          el.classList.remove("expanded");
+        });
+        dropdown.forEach((el) => {
+          el.classList.remove("open_input");
+        });
+        listContainer.forEach((el) => {
+          el.setAttribute("aria-expanded", false);
+        });
+      });
+    }
+
+    listItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        // console.log(e.target);
+        const tagTemplate = new tagConstructor(e.target);
+        this.$tagWrapper.appendChild(tagTemplate.getTags());
+        closeList();
+      });
+    });
+  }
+
   main() {
     this.printCardDom(this.sortedRecipeAlp());
 
     this.printMaterial(this.allMaterials());
 
-    dropdown();
+    this.dropdown();
   }
 }
 const app = new App();

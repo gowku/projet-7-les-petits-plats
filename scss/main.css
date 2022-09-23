@@ -157,6 +157,9 @@ header p {
 .tags .ustensil {
   background: #ed6454;
 }
+.tags .ustensil p::first-letter {
+  text-transform: capitalize;
+}
 
 .tag {
   background: #3282f7;
@@ -244,7 +247,7 @@ header p {
 }
 
 .dropdown__list {
-  display: none;
+  visibility: hidden;
   width: 100%;
   position: absolute;
   box-shadow: 0px 3px 2px 0 #a2a4b2;
@@ -298,6 +301,7 @@ header p {
 
 .open {
   opacity: 1;
+  visibility: visible;
 }
 .open_input {
   width: 36rem;

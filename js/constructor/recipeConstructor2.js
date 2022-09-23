@@ -9,7 +9,6 @@ export class RecipeConstructor {
     this.servings = recipe.servings;
     this.time = recipe.time;
     this.ustensils = recipe.ustensils;
-    // this.$ingredientWrapper = document.createElement("ul");
   }
 
   getRecipe() {
@@ -68,7 +67,6 @@ export class RecipeConstructor {
   getIngredient() {
     const ul = document.createElement("ul");
     ul.classList.add("ingredientContainer");
-    // let ingredients = [];
 
     this.recipe.ingredients.forEach((element) => {
       const ingredient = document.createElement("li");
@@ -79,7 +77,6 @@ export class RecipeConstructor {
         span.textContent = element.quantity + " " + element.unit;
         ingredient.appendChild(span);
         ul.appendChild(ingredient);
-        // console.log(ingredient);
       } else if (element.quantity != undefined) {
         ingredient.textContent = element.ingredient + " : ";
         const span = document.createElement("span");
@@ -90,11 +87,7 @@ export class RecipeConstructor {
         ingredient.textContent = element.ingredient;
         ul.appendChild(ingredient);
       }
-      //   console.log(ul);
-      //   ul.innerHTML += ingredient;
-      //   return ul;
     });
     return ul;
-    // console.log(ul);
   }
 }

@@ -77,7 +77,8 @@
 }
 
 .dropdown__list {
-  display: none;
+  // display: none;
+  visibility: hidden;
   width: 100%;
   position: absolute;
   box-shadow: 0px 3px 2px 0 #a2a4b2;
@@ -130,6 +131,7 @@
 
 .open {
   opacity: 1;
+  visibility: visible;
   // display: block;
   &_input {
     width: 36rem;

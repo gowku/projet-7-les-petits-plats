@@ -13,6 +13,9 @@
   }
   & .ustensil {
     background: $cinq;
+    & p::first-letter {
+      text-transform: capitalize;
+    }
   }
 }
 .tag {
