@@ -169,11 +169,19 @@ header p {
   color: white;
   border-radius: 5px;
   margin-left: 2rem;
-  width: 7rem;
-  height: 2.5rem;
+  width: 10rem;
+  height: 3rem;
 }
 .tag:first-child {
   margin-left: 0;
+}
+.tag p {
+  width: 75%;
+  text-align: center;
+}
+.tag svg {
+  height: 100%;
+  cursor: pointer;
 }
 
 .menus {

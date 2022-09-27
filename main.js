@@ -2,6 +2,7 @@ import { recipes } from "./js/data/recipes.js";
 import { RecipeConstructor } from "./js/constructor/recipeConstructor2.js";
 import { dropdownItemsConstructor } from "./js/constructor/dropdownItems.js";
 import { tagConstructor } from "./js/constructor/tagConstructor.js";
+import { search } from "./js/algoSearch/search.js";
 
 class App {
   constructor() {
@@ -118,10 +119,20 @@ class App {
 
     listItems.forEach((item) => {
       item.addEventListener("click", (e) => {
-        // console.log(e.target);
         const tagTemplate = new tagConstructor(e.target);
         this.$tagWrapper.appendChild(tagTemplate.getTags());
+        this.delTag();
         closeList();
+      });
+    });
+  }
+
+  delTag() {
+    const delBtn = document.querySelectorAll(".tag");
+    console.log(delBtn);
+    delBtn.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.target.closest(".tag").remove();
       });
     });
   }
@@ -132,6 +143,8 @@ class App {
     this.printMaterial(this.allMaterials());
 
     this.dropdown();
+
+    search();
   }
 }
 const app = new App();
