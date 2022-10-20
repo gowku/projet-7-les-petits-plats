@@ -199,6 +199,9 @@ header p {
 .menus-dropdownmenu-1 .input_selected:hover {
   background-color: #63a0f9;
 }
+.menus-dropdownmenu-1 .dropdown__list-item::first-letter {
+  text-transform: capitalize;
+}
 .menus-dropdownmenu-2 .color {
   background: #68d9a4;
   color: white;
@@ -206,6 +209,9 @@ header p {
 .menus-dropdownmenu-2 .dropdown__list-item:hover,
 .menus-dropdownmenu-2 .input_selected:hover {
   background-color: #91e3bd;
+}
+.menus-dropdownmenu-2 .dropdown__list-item::first-letter {
+  text-transform: capitalize;
 }
 .menus-dropdownmenu-3 .color {
   background: #ed6454;
@@ -380,4 +386,4 @@ main {
 .card-description-bottom-ingredients li {
   width: 95%;
   margin-top: 0.2rem;
-}/*# sourceMappingURL=main.css.map */
+}
