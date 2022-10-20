@@ -1,0 +1,42 @@
+.tags {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  &-container {
+    display: flex;
+  }
+  & .ingredient {
+    background: $tertiary;
+  }
+  & .appareil {
+    background: $quartary;
+  }
+  & .ustensil {
+    background: $cinq;
+    & p::first-letter {
+      text-transform: capitalize;
+    }
+  }
+}
+.tag {
+  background: $tertiary;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: $typoPrimary;
+  border-radius: 5px;
+  margin-left: 2rem;
+  width: 10rem;
+  height: 3rem;
+  &:first-child {
+    margin-left: 0;
+  }
+  & p {
+    width: 75%;
+    text-align: center;
+  }
+  & svg {
+    height: 100%;
+    cursor: pointer;
+  }
+}
