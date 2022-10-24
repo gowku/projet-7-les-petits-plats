@@ -2,7 +2,8 @@ import { recipes } from "./js/data/recipes.js";
 import { RecipeConstructor } from "./js/constructor/recipeConstructor2.js";
 import { dropdownItemsConstructor } from "./js/constructor/dropdownItems.js";
 import { tagConstructor } from "./js/constructor/tagConstructor.js";
-import { search } from "./js/algoSearch/search.js";
+// import { search } from "./js/algoSearch/search.js";
+import { searchIngredientDropdown } from "./js/algoSearch/search2.js";
 
 class App {
   constructor() {
@@ -37,7 +38,7 @@ class App {
     let ingredients = [];
     recipes.forEach((recipe) => {
       recipe.ingredients.forEach((ingredient) => {
-        ingredients.push(ingredient.ingredient);
+        ingredients.push(ingredient.ingredient.toLowerCase());
       });
     });
     let uniqueIngredients = [...new Set(ingredients)];
@@ -49,7 +50,7 @@ class App {
   allAppareil() {
     let appareils = [];
     recipes.forEach((recipe) => {
-      appareils.push(recipe.appliance);
+      appareils.push(recipe.appliance.toLowerCase());
     });
     let uniqueAppareils = [...new Set(appareils)];
     uniqueAppareils.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
@@ -61,7 +62,7 @@ class App {
     let ustensils = [];
     recipes.forEach((recipe) => {
       recipe.ustensils.forEach((ustensil) => {
-        ustensils.push(ustensil);
+        ustensils.push(ustensil.toLowerCase());
       });
     });
     let uniqueUstensil = [...new Set(ustensils)];
@@ -141,10 +142,16 @@ class App {
     this.printCardDom(this.sortedRecipeAlp());
 
     this.printMaterial(this.allMaterials());
+    // console.log(this.allMaterials());
 
     this.dropdown();
 
-    search();
+    //search.js
+    // search(this.allMaterials().ingredients);
+    // console.log(search(this.allMaterials()));
+
+    //search2.js
+    searchIngredientDropdown(this.allMaterials());
   }
 }
 const app = new App();
