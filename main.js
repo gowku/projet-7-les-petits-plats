@@ -97,17 +97,15 @@ class App {
     function toggle(i) {
       if (lists[i] != lists[0] && lists[0].classList.contains("open")) {
         closeList();
-      }
-      if (lists[i] != lists[1] && lists[1].classList.contains("open")) {
+      } else if (lists[i] != lists[1] && lists[1].classList.contains("open")) {
         closeList();
-      }
-      if (lists[i] != lists[2] && lists[2].classList.contains("open")) {
+      } else if (lists[i] != lists[2] && lists[2].classList.contains("open")) {
         closeList();
       }
 
       lists[i].classList.toggle("open");
       lists[i].classList.toggle("grille");
-      dropdown[i].classList.toggle("radius");
+      // dropdown[i].classList.toggle("radius");
       dropdown[i].classList.toggle("open_input");
       dropdownArrow[i].classList.toggle("expanded");
       listContainer[i].setAttribute("aria-expanded", lists[i].classList.contains("open"));

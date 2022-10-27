@@ -54,8 +54,8 @@
   height: 3.5rem;
   cursor: pointer;
   padding: 0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-radius: 5px;
+
   &__arrow {
     position: absolute;
     height: 100%;
@@ -72,10 +72,10 @@
     }
   }
 }
-.radius {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
+// .radius {
+//   border-bottom-left-radius: 5px;
+//   border-bottom-right-radius: 5px;
+// }
 
 .dropdown__list-container {
   position: relative;
