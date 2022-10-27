@@ -88,14 +88,45 @@ class App {
     const listItems = document.querySelectorAll(".dropdown__list-item");
     const dropdownSelectedNode = document.querySelectorAll(".dropdown__arrow");
 
+    const searchInputs = [
+      document.getElementById("ingredient-search"),
+      document.getElementById("appareil-search"),
+      document.getElementById("ustensil-search"),
+    ];
+
+    function toggle(i) {
+      if (lists[i] != lists[0] && lists[0].classList.contains("open")) {
+        closeList();
+      }
+      if (lists[i] != lists[1] && lists[1].classList.contains("open")) {
+        closeList();
+      }
+      if (lists[i] != lists[2] && lists[2].classList.contains("open")) {
+        closeList();
+      }
+
+      lists[i].classList.toggle("open");
+      lists[i].classList.toggle("grille");
+      dropdown[i].classList.toggle("radius");
+      dropdown[i].classList.toggle("open_input");
+      dropdownArrow[i].classList.toggle("expanded");
+      listContainer[i].setAttribute("aria-expanded", lists[i].classList.contains("open"));
+    }
+
+    //quand on clique sur la fleche
     for (let i = 0; i < dropdownSelectedNode.length; i++) {
       dropdownSelectedNode[i].addEventListener("click", (e) => {
-        lists[i].classList.toggle("open");
-        lists[i].classList.toggle("grille");
-        dropdown[i].classList.toggle("radius");
-        dropdown[i].classList.toggle("open_input");
-        dropdownArrow[i].classList.toggle("expanded");
-        listContainer[i].setAttribute("aria-expanded", lists[i].classList.contains("open"));
+        toggle(i);
+      });
+    }
+    //quand on clique dans l'input
+    for (let i = 0; i < searchInputs.length; i++) {
+      searchInputs[i].addEventListener("click", (e) => {
+        if (lists[i].classList.contains("open")) {
+          return;
+        } else {
+          toggle(i);
+        }
       });
     }
 
