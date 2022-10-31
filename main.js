@@ -3,7 +3,8 @@ import { RecipeConstructor } from "./js/constructor/recipeConstructor2.js";
 import { dropdownItemsConstructor } from "./js/constructor/dropdownItems.js";
 import { tagConstructor } from "./js/constructor/tagConstructor.js";
 // import { search } from "./js/algoSearch/search.js";
-import { searchIngredientDropdown } from "./js/algoSearch/search2.js";
+// import { searchIngredientDropdown } from "./js/algoSearch/search2.js";
+import { ingredientInDropdown } from "./js/algoSearch/search2.js";
 
 class App {
   constructor() {
@@ -34,18 +35,27 @@ class App {
     this.$ustensilWrapper.appendChild(Templates[2]);
   }
 
-  allIngredients = () => {
-    let ingredients = [];
-    recipes.forEach((recipe) => {
-      recipe.ingredients.forEach((ingredient) => {
-        ingredients.push(ingredient.ingredient.toLowerCase());
-      });
-    });
-    let uniqueIngredients = [...new Set(ingredients)];
-    uniqueIngredients.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
+  allIngredients() {
+    console.log(ingredientInDropdown);
+    // let ingredients = [];
+    // recipes.forEach((recipe) => {
+    //   recipe.ingredients.forEach((ingredient) => {
+    //     ingredients.push(ingredient.ingredient.toLowerCase());
+    //   });
+    // });
+    // let uniqueIngredients = [...new Set(ingredients)];
+    // uniqueIngredients.sort((a, b) => a.localeCompare(b, "fr", { ignorePunctuation: true }));
 
-    return uniqueIngredients;
-  };
+    // if (searchIngredientDropdown(uniqueIngredients) != undefined) {
+    //   let filteredIngredients = searchIngredientDropdown(uniqueIngredients);
+    //   console.log(filteredIngredients);
+    //   return filteredIngredients;
+    // } else {
+    //   return uniqueIngredients;
+    // }
+    // return uniqueIngredients;
+    return ingredientInDropdown;
+  }
 
   allAppareil() {
     let appareils = [];
@@ -72,6 +82,7 @@ class App {
   }
 
   allMaterials() {
+    // console.log(this.allIngredients());
     let materials = {};
     materials.ingredients = this.allIngredients();
     materials.appareils = this.allAppareil();
@@ -168,6 +179,11 @@ class App {
   }
 
   main() {
+    const searchInputs = [
+      document.getElementById("ingredient-search"),
+      document.getElementById("appareil-search"),
+      document.getElementById("ustensil-search"),
+    ];
     this.printCardDom(this.sortedRecipeAlp());
 
     this.printMaterial(this.allMaterials());
@@ -180,7 +196,13 @@ class App {
     // console.log(search(this.allMaterials()));
 
     //search2.js
-    searchIngredientDropdown(this.allMaterials());
+    // searchIngredientDropdown(this.allMaterials());
+
+    searchInputs[0].addEventListener("input", (e) => {
+      e.preventDefault();
+      document.getElementById("ingredient").children[0].remove();
+      console.log("execution", this.printMaterial(this.allMaterials()));
+    });
   }
 }
 const app = new App();

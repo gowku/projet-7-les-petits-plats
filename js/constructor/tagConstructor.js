@@ -9,7 +9,7 @@ export class tagConstructor {
     const witchOne = this.whitch.split("-")[1];
 
     const li = document.createElement("li");
-    li.classList.add("tag", "ingredient");
+    li.classList.add("tag");
 
     switch (witchOne) {
       case "ingredient":
