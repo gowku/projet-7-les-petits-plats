@@ -1,107 +1,119 @@
 import { recipes } from "./js/data/recipes.js";
 import { RecipeConstructor } from "./js/constructor/recipeConstructor2.js";
 import { dropdownItemsConstructor } from "./js/constructor/dropdownItems.js";
-import { dropdown } from "./js/utils/dropdown.js";
+// import { dropdown, selectedTag } from "./js/utils/dropdown.js";
 import { searchIngredientDropdown, searchAppareilDropdown, searchUstensilDropdown } from "./js/algoSearch/search2.js";
-// import { tagConstructor } from "./js/constructor/tagConstructor.js";
-// import { delTag } from "./js/utils/delTag.js";
+import { tagConstructor } from "./js/constructor/tagConstructor.js";
+import { delTag } from "./js/utils/delTag.js";
 
 const recipesWrapper = document.querySelector(".cards-container");
 const ingredientWrapper = document.getElementById("ingredient");
 const appareilWrapper = document.getElementById("appareil");
 const ustensilWrapper = document.getElementById("ustensil");
 
+let allRecipes = recipes;
 let uniqueIngredients = [];
 let uniqueAppareils = [];
 let uniqueUstensils = [];
 let materials = {};
-// let tagList = [];
+let selectedTag = [];
 
-const tagList = document.querySelector(".tags-container");
+//-------------dropdown----------------------------------
 
-// function dropdown(tagList) {
-//   const dropdown = document.querySelectorAll(".dropdown");
-//   const lists = document.querySelectorAll(".dropdown__list");
-//   const listContainer = document.querySelectorAll(".dropdown__list-container");
-//   const dropdownArrow = document.querySelectorAll(".dropdown__arrow");
-//   const listItems = document.querySelectorAll(".dropdown__list-item");
-//   const dropdownSelectedNode = document.querySelectorAll(".dropdown__arrow");
+let tagWrapper = document.querySelector(".tags-container");
 
-//   const searchInputs = [
-//     document.getElementById("ingredient-search"),
-//     document.getElementById("appareil-search"),
-//     document.getElementById("ustensil-search"),
-//   ];
+function dropdown() {
+  const dropdown = document.querySelectorAll(".dropdown");
+  const lists = document.querySelectorAll(".dropdown__list");
+  const listContainer = document.querySelectorAll(".dropdown__list-container");
+  const dropdownArrow = document.querySelectorAll(".dropdown__arrow");
+  const listItems = document.querySelectorAll(".dropdown__list-item");
+  const dropdownSelectedNode = document.querySelectorAll(".dropdown__arrow");
 
-//   function toggle(i) {
-//     if (lists[i] != lists[0] && lists[0].classList.contains("open")) {
-//       closeList();
-//     } else if (lists[i] != lists[1] && lists[1].classList.contains("open")) {
-//       closeList();
-//     } else if (lists[i] != lists[2] && lists[2].classList.contains("open")) {
-//       closeList();
-//     }
+  const searchInputs = [
+    document.getElementById("ingredient-search"),
+    document.getElementById("appareil-search"),
+    document.getElementById("ustensil-search"),
+  ];
 
-//     lists[i].classList.toggle("open");
-//     lists[i].classList.toggle("grille");
-//     // dropdown[i].classList.toggle("radius");
-//     dropdown[i].classList.toggle("open_input");
-//     dropdownArrow[i].classList.toggle("expanded");
-//     listContainer[i].setAttribute("aria-expanded", lists[i].classList.contains("open"));
-//   }
+  function toggle(i) {
+    if (lists[i] != lists[0] && lists[0].classList.contains("open")) {
+      closeList();
+    } else if (lists[i] != lists[1] && lists[1].classList.contains("open")) {
+      closeList();
+    } else if (lists[i] != lists[2] && lists[2].classList.contains("open")) {
+      closeList();
+    }
 
-//   //quand on clique sur la fleche
-//   for (let i = 0; i < dropdownSelectedNode.length; i++) {
-//     dropdownSelectedNode[i].addEventListener("click", (e) => {
-//       toggle(i);
-//     });
-//   }
-//   //quand on clique dans l'input
-//   for (let i = 0; i < searchInputs.length; i++) {
-//     searchInputs[i].addEventListener("click", (e) => {
-//       if (lists[i].classList.contains("open")) {
-//         return;
-//       } else {
-//         toggle(i);
-//       }
-//     });
-//   }
+    lists[i].classList.toggle("open");
+    lists[i].classList.toggle("grille");
+    // dropdown[i].classList.toggle("radius");
+    dropdown[i].classList.toggle("open_input");
+    dropdownArrow[i].classList.toggle("expanded");
+    listContainer[i].setAttribute("aria-expanded", lists[i].classList.contains("open"));
+  }
 
-//   function closeList() {
-//     const expanded = document.querySelector(".open");
-//     // console.log(dropdownArrow);
-//     lists.forEach((list) => {
-//       list.classList.remove("open");
-//       list.classList.remove("grille");
+  //quand on clique sur la fleche
+  for (let i = 0; i < dropdownSelectedNode.length; i++) {
+    dropdownSelectedNode[i].addEventListener("click", (e) => {
+      toggle(i);
+    });
+  }
+  //quand on clique dans l'input
+  for (let i = 0; i < searchInputs.length; i++) {
+    searchInputs[i].addEventListener("click", (e) => {
+      if (lists[i].classList.contains("open")) {
+        return;
+      } else {
+        toggle(i);
+      }
+    });
+  }
 
-//       dropdownArrow.forEach((el) => {
-//         el.classList.remove("expanded");
-//       });
-//       dropdown.forEach((el) => {
-//         el.classList.remove("open_input");
-//       });
-//       listContainer.forEach((el) => {
-//         el.setAttribute("aria-expanded", false);
-//       });
-//     });
-//   }
+  function closeList() {
+    const expanded = document.querySelector(".open");
+    // console.log(dropdownArrow);
+    lists.forEach((list) => {
+      list.classList.remove("open");
+      list.classList.remove("grille");
 
-//   listItems.forEach((item) => {
-//     item.addEventListener("click", (e) => {
-//       const tagTemplate = new tagConstructor(e.target);
-//       tagList.push(tagTemplate);
-//       console.log(tagList);
-//       tagWrapper.appendChild(tagTemplate.getTags());
-//       delTag();
-//       closeList();
-//       //mettre la valeur des inputs a l'etat initial
-//       document.querySelectorAll("input").forEach((input) => {
-//         input.value = "";
-//       });
-//       return tagList;
-//     });
-//   });
-// }
+      dropdownArrow.forEach((el) => {
+        el.classList.remove("expanded");
+      });
+      dropdown.forEach((el) => {
+        el.classList.remove("open_input");
+      });
+      listContainer.forEach((el) => {
+        el.setAttribute("aria-expanded", false);
+      });
+    });
+  }
+
+  const addTag = () => {
+    listItems.forEach((item) => {
+      item.addEventListener("click", (e) => {
+        const tagTemplate = new tagConstructor(e.target);
+        tagWrapper.appendChild(tagTemplate.getTags());
+        // console.log(tagTemplate);
+        const newValue = tagTemplate.whitch.split("-")[1];
+        tagTemplate.whitch = newValue;
+        console.log(tagTemplate);
+        selectedTag.push(tagTemplate);
+        // console.log(selectedTag);
+        printRecipeTagSearch();
+        delTag();
+        closeList();
+        //mettre la valeur des inputs a l'etat initial
+        document.querySelectorAll("input").forEach((input) => {
+          input.value = "";
+        });
+      });
+    });
+  };
+  addTag();
+}
+
+//-------------dropdown----------------------------------
 
 function printCardDom() {
   recipes.forEach((recipe) => {
@@ -177,14 +189,22 @@ dropdown();
 
 searchIngredientDropdown(printIngredient, materials, uniqueIngredients, dropdown);
 // searchIngredientDropdown(printIngredient, materials, uniqueIngredients, function () {
-//   dropdown(tagList);
+//   dropdown(selectedTag);
 // });
-console.log(tagList);
 
 searchAppareilDropdown(printAppareil, materials, uniqueAppareils, dropdown);
 
 searchUstensilDropdown(printUstensil, materials, uniqueUstensils, dropdown);
-// let listTag = document.getElementsByClassName("tag-container");
-// listTag.addEventListener("change", (e) => {
-//   console.log("ici");
-// });
+
+function printRecipeTagSearch() {
+  selectedTag.forEach((tag) => {
+    // console.log(Object(tag).name);
+    // console.log(Object(tag).whitch);
+    let newRecipesToPrint = recipes.filter((recipe) => {
+      recipe.ingredients.forEach((ingredient) => {
+        ingredient.ingredient.toLowerCase() === Object(tag).name.toLowerCase();
+      });
+    });
+    console.log(newRecipesToPrint);
+  });
+}
